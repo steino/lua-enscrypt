@@ -123,6 +123,3 @@ LUALIB_API int luaopen_enscrypt(lua_State * L)
 
 	return 1;
 }
-
-
-
