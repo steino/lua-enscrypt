@@ -19,14 +19,16 @@ local results = {
 
 local ok, fail = 0, 0
 
+print("Iterations", "Result", "Elapsed")
+
 for i, hash in next, results do
 	local output, elapsed = enscrypt.hash(password, salt, i)
 	if output == hash then
 		ok = ok + 1
-		print(i, "PASSED", ("%.3fs"):format(elapsed))
+		print(i, "", "PASSED", ("%.3fs"):format(elapsed))
 	else
 		fail = fail + 1
-		print(i, "FAILED", ("%.3fs"):format(elapsed))
+		print(i, "", "FAILED", ("%.3fs"):format(elapsed))
 	end
 end
 
