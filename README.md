@@ -19,7 +19,7 @@ local enscrypt = require'enscrypt'
 local hash = enscrypt.hash(password, hash, iterations)
 ```
 
-Installi:
+Install:
 
 Just run 'make' followed by 'make install'.
 
