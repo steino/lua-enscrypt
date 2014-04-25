@@ -18,3 +18,11 @@ Usage:
 local enscrypt = require'enscrypt'
 local hash = enscrypt.hash(password, hash, iterations)
 ```
+
+Installi:
+
+Just run 'make' followed by 'make install'.
+
+Tests:
+
+Run 'make test' to run tests.
