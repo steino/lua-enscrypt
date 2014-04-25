@@ -11,7 +11,7 @@ CC = gcc
 all: $(LIBNAME)
 
 $(LIBNAME):
-	$(CC) --std=c99 -o $(LIBNAME) $(SRCNAME) $(CFLAGS) $(LFLAGS)
+	$(CC) -o $(LIBNAME) $(SRCNAME) $(CFLAGS) $(LFLAGS) -Wall
 
 install: $(LIBNAME)
 	cp $(LIBNAME) $(LUACPATH)
