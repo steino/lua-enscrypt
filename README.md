@@ -6,17 +6,17 @@ Requires [EnScrypt](https://github.com/Novators/EnScrypt).
 
 Functions:
 
-**hash(password, hash, iterations)**
+**hash(password, salt, iterations)**
 
 - password - string
-- hash - 64 character hex string
+- salt - 64 character hex string
 - iterations - number of iterations
 
 Usage:
 
 ```lua
 local enscrypt = require'enscrypt'
-local hash = enscrypt.hash(password, hash, iterations)
+local hash = enscrypt.hash(password, salt, iterations)
 ```
 
 Install:
