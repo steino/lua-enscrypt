@@ -7,6 +7,8 @@
 #define LUAENSCRYPT_COPYRIGHT 			"Copyright (C) 2014, lua-enscrypt authors"
 #define LUAENSCRYPT_DESCRIPTION  		"Binding for the enscrypt library."
 
+#define N_FACTOR 9
+
 uint8_t *salt = NULL;
 
 const char hexTable[33] = "0123456789abcdef0123456789ABCDEF";
@@ -60,6 +62,7 @@ static int lenscrypt_hash(lua_State * L)
 	char str[65];
 	int retVal;
 	double startTime, endTime, elapsed;
+	size_t password_len = 0;
 
 	int len = strlen(salthex);
 	if(len == 64 && strspn(salthex, hexTable) == 64) {
@@ -70,13 +73,15 @@ static int lenscrypt_hash(lua_State * L)
 		return luaL_error(L, "Salt should be a 64 character hex string.");
 	}
 
+	password_len = strlen(password);
+
 	startTime = enscrypt_get_real_time();
 
 	if(iterations) {
-		retVal = enscrypt(buf, password, salt, iterations, NULL, NULL);
+		retVal = enscrypt(buf, password, password_len, salt, 32, iterations, N_FACTOR, NULL, NULL);
 	} else {
 		iterations = 1;
-		retVal = enscrypt(buf, password, salt, iterations, NULL, NULL);
+		retVal = enscrypt(buf, password, password_len, salt, 32, iterations, N_FACTOR, NULL, NULL);
 	}
 
 	endTime = enscrypt_get_real_time();
